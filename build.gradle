@@ -15,6 +15,7 @@ buildscript {
 
 plugins {
     id 'java'
+    id 'application'
     id 'idea'
     id 'checkstyle'
     id 'pmd'
@@ -23,11 +24,10 @@ plugins {
     id 'maven-publish'
     id 'org.springframework.boot'               version '1.5.21.RELEASE'
     id 'com.jfrog.artifactory'                  version '4.4.14'
-    id 'com.bmuschko.docker-remote-api'         version '3.0.11'
-    id "org.flywaydb.flyway"                    version "4.2.0"
 
 }
 
+apply plugin: 'application'
 apply plugin: 'io.github.robwin.jgitflow'
 apply plugin: 'project-report'
 
@@ -44,6 +44,10 @@ repositories {
 
 configurations {
     compile.exclude module: 'spring-boot-starter-logging'
+    
+    application {
+        mainClassName = 'org.opentestsystem.ap.timstool.TimsToolApplication'
+    }
 }
 
 dependencies {
@@ -85,6 +89,7 @@ processResources {
 /***************************
  * publishing
  ***************************/
+
 
 task sourceJar(type: Jar) {
     from sourceSets.main.allJava
