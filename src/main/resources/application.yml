@@ -1,0 +1,31 @@
+# ---------------------------------------------------------
+# The Gradle build expands its project properties to
+# replace the substitution tokens.
+# ---------------------------------------------------------
+
+# shown on the actuator /info endpoint
+info:
+  app:
+    name: ${name}
+    version: ${version}
+    description: ${description}
+    java:
+      source: ${sourceCompatibility}
+      target: ${targetCompatibility}
+
+# changes actuator endpoints - /manage/info
+management:
+  context-path: "/manage"
+
+api:
+  context-path: "/api"
+
+spring:
+  main:
+    banner-mode: "off"
+    web-application-type: "NONE"
+  jackson:
+    deserialization:
+      fail_on_unknown_properties: false
+    mapper:
+      sort_properties_alphabetically: true
