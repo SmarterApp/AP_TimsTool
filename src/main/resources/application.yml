@@ -22,7 +22,6 @@ spring:
     mapper:
       sort_properties_alphabetically: true
 
-
 tims:
   tool:
     appScriptName: "./tims"
