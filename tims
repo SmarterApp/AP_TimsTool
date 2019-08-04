@@ -1,3 +1,9 @@
 #!/usr/bin/env bash
 
-java -jar build/libs/ap-tims-tool-0.5.6-SNAPSHOT.jar "$@"
+#
+# ./tims create-test-package -i FixedFormInputSample.xlsx -o MyResults.xml -t <insert-your-token>
+#
+
+./gw -q genBin
+
+./tims.sh "$@"

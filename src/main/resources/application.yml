@@ -25,5 +25,6 @@ spring:
 
 tims:
   tool:
-    appScriptName: "tims"
-    apiGatewayUrl: ""
+    appScriptName: "./tims"
+    apiGatewayUrl: "http://localhost:8180"
+    createTestManagementEndpoint: "/api/tms/package/generate"
