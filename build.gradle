@@ -1,4 +1,5 @@
 import org.apache.tools.ant.BuildException
+import org.apache.tools.ant.filters.ReplaceTokens
 
 buildscript {
     ext {
@@ -22,8 +23,8 @@ plugins {
     id 'findbugs'
     id 'jacoco'
     id 'maven-publish'
-    id 'org.springframework.boot'               version '1.5.21.RELEASE'
-    id 'com.jfrog.artifactory'                  version '4.4.14'
+    id 'org.springframework.boot' version '1.5.21.RELEASE'
+    id 'com.jfrog.artifactory' version '4.4.14'
 
 }
 
@@ -44,7 +45,7 @@ repositories {
 
 configurations {
     compile.exclude module: 'spring-boot-starter-logging'
-    
+
     application {
         mainClassName = 'org.opentestsystem.ap.timstool.TimsToolApplication'
     }
@@ -57,10 +58,12 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-web'
     compile 'org.springframework.boot:spring-boot-starter-log4j2'
 
-    compile 'commons-cli:commons-cli:1.4'   
+    compile 'commons-cli:commons-cli:1.4'
 
     compile 'org.apache.commons:commons-collections4:4.1'
     compile 'org.apache.commons:commons-lang3:3.5'
+
+    compile 'org.apache.httpcomponents:httpclient:4.5.9'
 
     compile 'org.apache.logging.log4j:log4j-api:2.10.0'
     compile 'org.apache.logging.log4j:log4j-core:2.10.0'
@@ -110,13 +113,13 @@ artifactory {
 
     publish {
         repository {
-            repoKey  = project.version.contains('-SNAPSHOT') ? project.artifactorySnapshotPublish : project.artifactoryReleasePublish
+            repoKey = project.version.contains('-SNAPSHOT') ? project.artifactorySnapshotPublish : project.artifactoryReleasePublish
             username = project.artifactoryUser
             password = project.artifactoryPassword
-            maven	 = true
+            maven = true
         }
         defaults {
-            publications ('mavenJava')
+            publications('mavenJava')
         }
     }
 }
@@ -173,7 +176,7 @@ tasks.withType(FindBugs) {
     reports {
         xml.enabled = false
         html.enabled = true
-	    html.stylesheet resources.text.fromFile('config/findbugs/findbugs-color.xsl')
+        html.stylesheet resources.text.fromFile('config/findbugs/findbugs-color.xsl')
     }
 }
 
@@ -192,7 +195,7 @@ def doCommonVersionUpdate(String version) {
     File propertiesFile = project.file(Project.GRADLE_PROPERTIES)
     if (!propertiesFile.file) {
         propertiesFile.append("commonVersion=${version}")
-    }else {
+    } else {
         try {
             project.ant.replace(file: propertiesFile, token: "commonVersion=${currentVersion}", value: "commonVersion=${version}", failOnNoReplacements: true)
         } catch (BuildException e) {
@@ -216,3 +219,22 @@ task wrapper(type: Wrapper) {
 tasks.artifactoryPublish.dependsOn 'build'
 
 test.finalizedBy(jacocoTestReport)
+
+
+/***************************
+ * Generates scripts
+ ***************************/
+
+
+task cleanBin(type: Delete) {
+    delete file('tims.sh')
+}
+
+task genBin(type: Copy) {
+    from('template/') {
+        filter(ReplaceTokens, tokens: ['version': project.version])
+    }
+    into "${project.projectDir}"
+}
+
+genBin.dependsOn cleanBin
