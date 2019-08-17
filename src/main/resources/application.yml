@@ -3,7 +3,6 @@
 # replace the substitution tokens.
 # ---------------------------------------------------------
 
-# shown on the actuator /info endpoint
 info:
   app:
     name: ${name}
@@ -12,13 +11,6 @@ info:
     java:
       source: ${sourceCompatibility}
       target: ${targetCompatibility}
-
-# changes actuator endpoints - /manage/info
-management:
-  context-path: "/manage"
-
-api:
-  context-path: "/api"
 
 spring:
   main:
@@ -29,3 +21,9 @@ spring:
       fail_on_unknown_properties: false
     mapper:
       sort_properties_alphabetically: true
+
+tims:
+  tool:
+    appScriptName: "./tims"
+    apiGatewayUrl: "http://localhost:8180"
+    createTestManagementEndpoint: "/api/tms/package/generate"
