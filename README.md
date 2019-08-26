@@ -8,7 +8,7 @@ The tool has a set of commands it accepts.  The different commands require diffe
 
 ## Installation
 
-TODO - finish this section
+TODO - finish this section.
 Currently the project must first be built. 
 
 - Clone the project locally.  
@@ -16,7 +16,7 @@ Currently the project must first be built.
 - Build the project ./gw bootRePack
 - Run `./tims` followed by whatever commands you wish to execute.
 
-NOTE: To run locally against an external environment, the main tool property to override is `tims.tool.apiGatewayUrl`. The environment variable to use is `TIMS_TOOL_API_GATEWAY_URL.`
+NOTE: To run locally against an external environment, the main tool property to override is `tims.tool.apiGatewayUrl`. The environment variable to use is `TIMS_TOOL_API_GATEWAY_URL` .
 
 Set this prior to running the tool. Ex: ```$ export TIMS_TOOL_API_GATEWAY_URL=https://iat-api-gateway-awsdev.sbtds.org```
 
