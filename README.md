@@ -40,7 +40,7 @@ $ ./tims create-test-package -t 12345-1234-1234-1234-123456789 -i SBAC-IAB-FIXED
 starting...
 
 validated..., submitting request to TIMS
-The results have been written to outputFile2.xml
+The results have been written to outputFile.xml
 
 complete
 $
