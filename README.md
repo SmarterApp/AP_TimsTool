@@ -27,7 +27,8 @@ These are the most basic options when first getting started
 - `-h`: prints the help message
 - `-c`: lists the tool commands 
 
-A new command has been added to the tool.  The command is ‘create-test-package’.  It requires three command line options
+### Commands
+A new command has been added to the tool.  The command is `create-test-package`.  It requires three command line options
 
 - `-i`: spreadsheet name
 - `-o`: file name to write results
