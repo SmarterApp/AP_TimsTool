@@ -45,6 +45,7 @@ repositories {
 
 configurations {
     compile.exclude module: 'spring-boot-starter-logging'
+    compile.exclude module: 'spring-boot-starter-tomcat'
 
     application {
         mainClassName = 'org.opentestsystem.ap.timstool.TimsToolApplication'
