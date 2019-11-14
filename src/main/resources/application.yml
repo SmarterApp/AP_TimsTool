@@ -27,3 +27,11 @@ tims:
     appScriptName: "./tims"
     apiGatewayUrl: "http://localhost:8180"
     createTestManagementEndpoint: "/api/tms/package/generate"
+    translationContentPackageEndpoint: "/api/translation/content-packages"
+    sso:
+      username: ${tims.tool.sso.username}
+      password: ${tims.tool.sso.password}
+      clientId: ${tims.tool.sso.client-id}
+      clientSecret: ${tims.tool.sso.client-secret}
+      grantType: ${tims.tool.sso.grant-type}
+      url: ${tims.tool.sso.url}
