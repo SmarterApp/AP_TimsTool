@@ -29,9 +29,9 @@ tims:
     createTestManagementEndpoint: "/api/tms/package/generate"
     translationContentPackageEndpoint: "/api/translation/content-packages"
     sso:
-      username: ${tims.tool.sso.username}
-      password: ${tims.tool.sso.password}
-      clientId: ${tims.tool.sso.client-id}
-      clientSecret: ${tims.tool.sso.client-secret}
-      grantType: ${tims.tool.sso.grant-type}
-      url: ${tims.tool.sso.url}
+      username: \${TIMS_TOOL_SSO_USERNAME}
+      password: \${TIMS_TOOL_SSO_PASSWORD}
+      clientId: \${TIMS_TOOL_SSO_CLIENT_ID}
+      clientSecret: \${TIMS_TOOL_SSO_CLIENT_SECRET}
+      grantType: \${TIMS_TOOL_SSO_GRANT_TYPE}
+      url: \${TIMS_TOOL_SSO_URL}
