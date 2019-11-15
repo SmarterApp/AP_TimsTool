@@ -108,7 +108,11 @@ Process finished with exit code 0
 
 ## Authorization
 
-At this time, the user is required to obtain an auth token first. 
+The following SSO-related environment variables need to be defined before running the application:
 
-*This will be changed so the user can either login via the tims-tool, or the user could have credentials in the environment and the tims-tool uses those to get the auth-token.*
-
+TIMS_TOOL_SSO_URL
+TIMS_TOOL_SSO_GRANT_TYPE
+TIMS_TOOL_SSO_USERNAME
+TIMS_TOOL_SSO_PASSWORD
+TIMS_TOOL_SSO_CLIENT_ID
+TIMS_TOOL_SSO_CLIENT_SECRET
