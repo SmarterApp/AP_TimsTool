@@ -28,15 +28,15 @@ These are the most basic options when first getting started
 - `-c`: lists the tool commands 
 
 ### Commands
-A new command has been added to the tool.  The command is `create-test-package`.  It requires three command line options
+Command: `create-test-package` 
+Description: Creates an XML test package based on the input spreadsheet
 
 - `-i`: spreadsheet name
 - `-o`: file name to write results
-- `-t`: authorization token
-  
+
 Example usage and output from create-test-package:
 ```
-$ ./tims create-test-package -t 12345-1234-1234-1234-123456789 -i SBAC-IAB-FIXED-G11M-Winter-2017-2018.xlsx -o outputFile.xml
+$ ./tims create-test-package -i SBAC-IAB-FIXED-G11M-Winter-2017-2018.xlsx -o outputFile.xml
 starting...
 
 validated..., submitting request to TIMS
@@ -46,9 +46,73 @@ complete
 $
 ```
 
+Command: `create-saaif-content-package`
+Description: Initiates an SAAIF content package job
+- `-d`: the item id(s) to create SAAIF item packages for, as a comma delimited list with no spaces
+Usage: `create-saaif-content-package -d 1234,5678`
+Example usage and output from create-saaif-content-package:
+```
+$ ./tims create-saaif-content-package -d 209572,209783,209895
+starting...
+
+validated..., submitting request to TIMS translation service
+The content package creation request was successful:
+Content Package Id: 1
+Item Ids: [209572, 209783, 209895]
+
+complete
+
+Process finished with exit code 0
+
+```
+
+Command: `get-saaif-content-package-status`
+Description: Gets the status of an SAAIF content package job 
+Example usage and output from get-saaif-content-package-status:
+```
+$ ./tims get-saaif-content-package-status 1
+starting...
+
+validated..., submitting request to TIMS translation service
+Content Package Status for id 1: COMPLETED
+
+complete
+
+Process finished with exit code 0
+
+```
+
+Command: `get-saaif-content-package-archive`
+Description: Gets the status of an SAAIF content package job 
+Usage: `get-saaif-content-package-status -1`
+
+Command: `get-saaif-content-package-archive`
+- The content package id
+- `-o`: file name to write the archive package
+Example usage and output from get-saaif-content-package-status:
+```
+$ ./tims get-saaif-content-package-archive -o package-1.zip 1
+starting...
+
+validated..., submitting request to TIMS translation service
+The results have been written to package-1.zip
+
+complete
+
+Process finished with exit code 0
+
+
+```
+
+
+
 ## Authorization
 
-At this time, the user is required to obtain an auth token first. 
+The following SSO-related environment variables need to be defined before running the application:
 
-*This will be changed so the user can either login via the tims-tool, or the user could have credentials in the environment and the tims-tool uses those to get the auth-token.*
-
+TIMS_TOOL_SSO_URL
+TIMS_TOOL_SSO_GRANT_TYPE
+TIMS_TOOL_SSO_USERNAME
+TIMS_TOOL_SSO_PASSWORD
+TIMS_TOOL_SSO_CLIENT_ID
+TIMS_TOOL_SSO_CLIENT_SECRET
