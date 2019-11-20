@@ -111,8 +111,13 @@ Process finished with exit code 0
 The following SSO-related environment variables need to be defined before running the application:
 
 TIMS_TOOL_SSO_URL
+
 TIMS_TOOL_SSO_GRANT_TYPE
+
 TIMS_TOOL_SSO_USERNAME
+
 TIMS_TOOL_SSO_PASSWORD
+
 TIMS_TOOL_SSO_CLIENT_ID
+
 TIMS_TOOL_SSO_CLIENT_SECRET
