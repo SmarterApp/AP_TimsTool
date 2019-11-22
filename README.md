@@ -121,3 +121,18 @@ complete
 
 Process finished with exit code 0
 <pre>
+
+
+```
+
+## Authorization
+
+The following Open AM/SSO-related environment variables need to be defined before running the application:
+
+**TIMS_TOOL_SSO_URL** - The URL to the SSO access token endpoint  
+**TIMS_TOOL_SSO_USERNAME** - The username of the user to authenticate against Open AM    
+**TIMS_TOOL_SSO_PASSWORD** - The password of the user to authenticate against Open AM  
+**TIMS_TOOL_SSO_CLIENT_ID** - The client id as configured and stored in Open AM. This is a public identifier for the application    
+**TIMS_TOOL_SSO_CLIENT_SECRET** - The client secret "password" as configured and stored in Open AM.  
+**TIMS_TOOL_SSO_GRANT_TYPE** - The grant type as configured in Open AM - the value for this in most instances is `password`
+   
