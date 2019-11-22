@@ -136,3 +136,10 @@ The following Open AM/SSO-related environment variables need to be defined befor
 **TIMS_TOOL_SSO_CLIENT_SECRET** - The client secret "password" as configured and stored in Open AM.  
 **TIMS_TOOL_SSO_GRANT_TYPE** - The grant type as configured in Open AM - the value for this in most instances is `password`
    
+An example of configured environment variables might look like this:
+TIMS_TOOL_SSO_URL=https://my-sso.environment.org/auth/oauth2/access_token?realm=/sbac
+TIMS_TOOL_SSO_USERNAME=sso-user@example.com
+TIMS_TOOL_SSO_PASSWORD=[the password for sso-user@example.com]
+TIMS_TOOL_SSO_CLIENT_ID=pm
+TIMS_TOOL_SSO_CLIENT_SECRET=[the client secret/"password" for the pm client]
+TIMS_TOOL_SSO_GRANT_TYPE=password
