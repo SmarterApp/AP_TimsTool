@@ -50,16 +50,18 @@ Command: `create-test-package`
 Description: Creates an XML test package based on the input spreadsheet
 
 - `-i`: spreadsheet name
-- `-o`: file name to write results
+- `-o`: output directory to write results (defaults to current working directory)
+
+(Output file name will be created based on the package ID found in the input file.)
 
 Example usage and output from create-test-package:
 
 <pre>
-$ java -jar <jar-name>  create-test-package -i SBAC-IAB-FIXED-G11M-Winter-2017-2018.xlsx -o outputFile.xml
+$ java -jar <jar-name>  create-test-package -i SBAC-IAB-FIXED-G11M-Winter-2017-2018.xlsx -o .
 starting...
 
 validated..., submitting request to TIMS
-The results have been written to outputFile.xml
+The results have been written to ./SBAC-IAB-FIXED-G11M-AlgLin.xml
 
 complete
 </pre>
