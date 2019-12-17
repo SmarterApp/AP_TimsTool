@@ -22,18 +22,19 @@ The following SSO-related environment variables need to be defined before runnin
 <pre>
 # The URL to the TIMS Gateway that is used to make OAuth2 calls to TIMS
 export TIMS_TOOL_API_GATEWAY_URL=
-# These are OpenAM credentails that will need to be provided for the TIMS environment
+
+# The URL to the OAUTH2 endpoint for OpenAM or Okta
+export TIMS_TOOL_SSO_URL=
+
+# These are OpenAM or Okta credentials that will need to be provided for the TIMS environment
 export TIMS_TOOL_SSO_GRANT_TYPE=
-export TIMS_TOOL_SSO_PASSWORD=
 export TIMS_TOOL_SSO_CLIENT_ID=
+export TIMS_TOOL_SSO_CLIENT_SECRET=
 
 # The TIMS User ID to be used for authentication
 export TIMS_TOOL_SSO_USERNAME=
 # The TIMS password to be used for authentication
-export TIMS_TOOL_SSO_CLIENT_SECRET=
-
-# The URL to the OAUTH2 endpoint for OpenAM
-export TIMS_TOOL_SSO_URL=
+export TIMS_TOOL_SSO_PASSWORD=
 </pre>
 
 When setting up the tool for the first time please reach out to the IT team to provide you with the proper information.
@@ -50,16 +51,18 @@ Command: `create-test-package`
 Description: Creates an XML test package based on the input spreadsheet
 
 - `-i`: spreadsheet name
-- `-o`: file name to write results
+- `-o`: output directory to write results (defaults to current working directory)
+
+(Output file name will be created based on the package ID found in the input file.)
 
 Example usage and output from create-test-package:
 
 <pre>
-$ java -jar <jar-name>  create-test-package -i SBAC-IAB-FIXED-G11M-Winter-2017-2018.xlsx -o outputFile.xml
+$ java -jar <jar-name>  create-test-package -i SBAC-IAB-FIXED-G11M-Winter-2017-2018.xlsx -o .
 starting...
 
 validated..., submitting request to TIMS
-The results have been written to outputFile.xml
+The results have been written to ./SBAC-IAB-FIXED-G11M-AlgLin.xml
 
 complete
 </pre>
@@ -127,14 +130,14 @@ Process finished with exit code 0
 
 ## Authorization
 
-The following Open AM/SSO-related environment variables need to be defined before running the application:
+The following OpenAM or Okta SSO-related environment variables need to be defined before running the application:
 
 **TIMS_TOOL_SSO_URL** - The URL to the SSO access token endpoint  
-**TIMS_TOOL_SSO_USERNAME** - The username of the user to authenticate against Open AM    
-**TIMS_TOOL_SSO_PASSWORD** - The password of the user to authenticate against Open AM  
-**TIMS_TOOL_SSO_CLIENT_ID** - The client id as configured and stored in Open AM. This is a public identifier for the application    
-**TIMS_TOOL_SSO_CLIENT_SECRET** - The client secret "password" as configured and stored in Open AM.  
-**TIMS_TOOL_SSO_GRANT_TYPE** - The grant type as configured in Open AM - the value for this in most instances is `password`
+**TIMS_TOOL_SSO_USERNAME** - The username of the user to authenticate against OpenAM or Okta    
+**TIMS_TOOL_SSO_PASSWORD** - The password of the user to authenticate against OpenAM or Okta
+**TIMS_TOOL_SSO_CLIENT_ID** - The client id as configured and stored in OpenAM or Okta. This is a public identifier for the application    
+**TIMS_TOOL_SSO_CLIENT_SECRET** - The client secret "password" as configured and stored in OpenAM or Okta.  
+**TIMS_TOOL_SSO_GRANT_TYPE** - The grant type as configured in OpenAM or Okta - the value for this in most instances is `password`
    
 An example of configured environment variables might look like this:
 TIMS_TOOL_SSO_URL=https://my-sso.environment.org/auth/oauth2/access_token?realm=/sbac
