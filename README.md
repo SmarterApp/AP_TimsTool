@@ -70,7 +70,12 @@ complete
 Command: `create-saaif-content-package`
 Description: Initiates an SAAIF content package job
 - `-d`: the item id(s) to create SAAIF item packages for, as a comma delimited list with no spaces
-Usage: `create-saaif-content-package -d 1234,5678`
+- `-notut`: (optional) do not automatically include tutorials in the package. However, if the ID of a tutorial is included in the IDs file it will still be included in the package.
+
+Usage:     
+`create-saaif-content-package -d 1234,5678`  
+`create-saaif-content-package -notut -d 1234,5678`
+       
 Example usage and output from create-saaif-content-package:
 
 <pre>
